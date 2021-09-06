@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from './Button';
 import './Navbar.css';
@@ -18,13 +18,17 @@ const Navbar = () => {
     }
   };
 
+  useEffect(() => {
+    showButton();
+  }, []);
+
   window.addEventListener('resite', showButton);
 
   return (
     <>
       <nav className='navbar'>
         <div className='navbar-container'>
-          <Link to='/' className='navbar-logo'>
+          <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
             Empire <i className='fas fa-jedi' />
           </Link>
           <div className='menu-icon' onClick={handleClick}>
